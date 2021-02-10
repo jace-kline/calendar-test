@@ -10,7 +10,7 @@ export function MyCalendar(props) {
         <Calendar
             style={{height: 500}}
             localizer={localizer}
-            events={[]}
+            events={props.events}
             startAccessor="start"
             endAccessor="end"
         />

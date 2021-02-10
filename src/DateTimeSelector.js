@@ -6,8 +6,11 @@ import moment from 'moment';
 export function DateTimeSelector(props) {
     const [date, setDate] = useState(new Date());
 
-    function handleChange(d) {
+    function onChange(d) {
         setDate(d);
+        if(props.onChange) {
+            props.onChange(d);
+        }
     }
 
     return (
@@ -16,7 +19,8 @@ export function DateTimeSelector(props) {
                 autoOk={true}
                 allowKeyboardControl={true}
                 disablePast={true}
-                onChange={handleChange}
+                onChange={onChange}
+                minDate={props.minDate}
                 value={date}
             />
         </MuiPickersUtilsProvider>
