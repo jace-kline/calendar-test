@@ -5,12 +5,15 @@ import 'react-big-calendar/lib/css/react-big-calendar.css';
 const localizer = momentLocalizer(moment);
 
 export function MyCalendar(props) {
+
+    const { style, events } = props;
+
     return (
     <div>
         <Calendar
-            style={{height: 500}}
+            style={style || {height: 500}}
             localizer={localizer}
-            events={props.events}
+            events={events || []}
             startAccessor="start"
             endAccessor="end"
         />

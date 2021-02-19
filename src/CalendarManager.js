@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import { EventLikeCreator } from './EventLikeCreator';
+import { CreateEventForm } from './CreateEventForm';
 import { MyCalendar } from './MyCalendar';
 
 export function CalendarManager(props) {
@@ -19,7 +19,7 @@ export function CalendarManager(props) {
     return (
         <div>
         <MyCalendar events={events}/>
-        <EventLikeCreator onSubmit={onSubmit} />
+        <CreateEventForm />
         </div>
     );
 }
