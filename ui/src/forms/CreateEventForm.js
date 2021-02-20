@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
-import { Input } from './components/input/Input';
-import { useForm, Form } from './components/input/useForm';
+import { Input } from './common/Input';
+import { useForm, Form } from './commom/useForm';
 import { Divider, Grid, Paper, Typography } from '@material-ui/core';
 // import { makeStyles } from '@material-ui/core/styles';
 

@@ -1,9 +1,8 @@
 import logo from './logo.svg';
 import './App.css';
-import { CalendarManager } from './CalendarManager';
 import { ThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 import { CssBaseline } from '@material-ui/core';
-import { CreateEventForm } from './CreateEventForm';
+import { Login } from './login/Login';
 
 const theme = createMuiTheme({
   palette: {
@@ -14,7 +13,7 @@ const theme = createMuiTheme({
 function App() {
   return (
     <ThemeProvider theme={theme}>
-      <CreateEventForm />
+      <Login />
       <CssBaseline />
     </ThemeProvider>
   );
