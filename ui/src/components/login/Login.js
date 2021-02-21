@@ -31,7 +31,7 @@ export function Login(props) {
     const signup = useForm(initialSignup, validateSignup)
     const login = useForm(initialLogin, validateLogin)
 
-    const usersState = useSelector(state => state.users, shallowEqual);
+    const usersState = useSelector(state => state.users);
     const dispatch = useDispatch();
 
     function validateSignup(fields = signup.vals) {
@@ -100,9 +100,9 @@ export function Login(props) {
     return (
         <>
             <div>
-                {usersState.isPending ? 'Loading'
-                : usersState.isError ? `Error: ${JSON.stringify(usersState.error)}`
-                : `Current user: ${JSON.stringify(usersState.currentUser)}`}
+                Pending?: {usersState.isPending ? 'true' : 'false'}<br />
+                Error?: {usersState.isError ? 'true' : 'false'}<br />
+                Current user: {JSON.stringify(usersState.currentUser)}
             </div>
             <Typography>
                 NextUp

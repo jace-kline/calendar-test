@@ -1,4 +1,4 @@
-import { API_URL } from './apiConfig'
+import { API_URL, axios, axiosConfig } from './apiConfig'
 // import axios ??
 
 // const fakeUser = {
@@ -10,25 +10,43 @@ import { API_URL } from './apiConfig'
 // }
 
 export async function signup(userInfo) {
-    let res;
-    setTimeout(() => {
-        res = { data: userInfo } ;
-    }, 3000);
-    return res;
+    try {
+        let res = await axios.post(
+            `${API_URL}/users/signup/`, 
+            userInfo,
+            axiosConfig
+        );
+        console.log(res.data);
+        return res.data;
+    } catch(err) {
+        return err;
+    }
 }
 
 export async function login(loginInfo) {
-    let res;
-    setTimeout(() => {
-        res = { data: loginInfo } ;
-    }, 3000);
-    return res;
+    try {
+        let res = await axios.post(
+            `${API_URL}/users/login/`, 
+            loginInfo,
+            axiosConfig
+        );
+        console.log(res.data);
+        return res.data;
+    } catch(err) {
+        return err;
+    }
 }
 
 export async function logout(user) {
-    let res;
-    setTimeout(() => {
-        res = { data: true };
-    }, 3000);
-    return res;
+    try {
+        let res = await axios.post(
+            `${API_URL}/users/logout/`, 
+            user,
+            axiosConfig
+        );
+        console.log(res.data);
+        return res.data;
+    } catch(err) {
+        return err;
+    }
 }

@@ -3,36 +3,36 @@ import { api } from '../../api-client/api.js'
 
 export const signup = createAsyncThunk(
     'users/signup',
-    async (signupInfo, thunkAPI) => {
+    async (signupInfo, { rejectWithValue }) => {
         try {
             const res = await api.users.signup(signupInfo);
-            return res.data; // returns the user object
+            return res; // returns the user object as the payload
         } catch(err) {
-            return err;
+            return rejectWithValue(err.response.data);
         }
     }
 )
 
 export const login = createAsyncThunk(
     'users/login',
-    async (loginInfo, thunkAPI) => {
+    async (loginInfo, { rejectWithValue }) => {
         try {
             const res = await api.users.login(loginInfo);
-            return res.data; // returns the user object
+            return res; // returns the user object as the payload
         } catch(err) {
-            return err;
+            return rejectWithValue(err.response.data);
         }
     }
 )
 
 export const logout = createAsyncThunk(
     'users/logout',
-    async (user, thunkAPI) => {
+    async (user, { rejectWithValue }) => {
         try {
             const res = await api.users.logout(user);
             return null; // returns null
         } catch(err) {
-            return err;
+            return rejectWithValue(err.response.data);
         }
     }
 )
