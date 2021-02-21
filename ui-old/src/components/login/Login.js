@@ -31,8 +31,8 @@ export function Login(props) {
     const signup = useForm(initialSignup, validateSignup)
     const login = useForm(initialLogin, validateLogin)
 
-    const usersState = useSelector(state => state.users, shallowEqual);
-    const dispatch = useDispatch();
+    //const usersState = useSelector(state => state.users, shallowEqual);
+    //const dispatch = useDispatch();
 
     function validateSignup(fields = signup.vals) {
         let errs = {};
@@ -82,16 +82,20 @@ export function Login(props) {
         e.preventDefault();
         if(validateSignup()) {
             // dispatch redux event to try to add the new user
-            dispatch(submitSignup(signup.vals));
+            // dispatch(submitSignup(signup.vals));
             // alert('successful sign up')
             setSignupWindow(false);
         }
+        // try to create user on backend
+        // dispatch(addUser)
+
+        //close signup window
     }
 
     async function onLoginSubmit(e) {
         e.preventDefault();
         if(validateLogin()) {
-            dispatch(submitLogin(login.vals));
+            // dispatch(submitLogin(login.vals));
             // alert('successful login')
             setLoginWindow(false);
         }
@@ -99,11 +103,11 @@ export function Login(props) {
 
     return (
         <>
-            <div>
+            {/* <div>
                 {usersState.isPending ? 'Loading'
                 : usersState.isError ? `Error: ${JSON.stringify(usersState.error)}`
-                : `Current user: ${JSON.stringify(usersState.currentUser)}`}
-            </div>
+                : `Current user ${JSON.stringify(usersState.currentUser)}`}
+            </div> */}
             <Typography>
                 NextUp
             </Typography>
