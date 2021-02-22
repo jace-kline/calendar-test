@@ -1,8 +1,8 @@
 
-export const API_PORT = 8080
+export const API_PORT = 9000
 export const API_DOMAIN = 'http://localhost'
-export const API_PREFIX = 'api'
-export const API_URL = `${API_DOMAIN}:${API_PORT}/${API_PREFIX}`
+// export const API_PREFIX = 'api'
+export const API_URL = `${API_DOMAIN}:${API_PORT}`
 
 export const axios = require('axios');
 
