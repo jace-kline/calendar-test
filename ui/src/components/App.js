@@ -1,7 +1,8 @@
 import './App.css';
 import { ThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 import { CssBaseline } from '@material-ui/core';
-import { Login } from './login/Login';
+import { Router } from './router/Router';
+import { Login } from './login/Login'
 
 const theme = createMuiTheme({
   palette: {
@@ -12,7 +13,7 @@ const theme = createMuiTheme({
 function App() {
   return (
     <ThemeProvider theme={theme}>
-      <Login />
+      <Router />
       <CssBaseline />
     </ThemeProvider>
   );
