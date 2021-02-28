@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { useDispatch, useSelector, shallowEqual } from 'react-redux'
-import { signup as submitSignup, login as submitLogin } from '../../state/users/thunks'
+import { signup as submitSignup, login as submitLogin } from '../../state/users/actions'
 import { Typography } from '@material-ui/core'
 import { Input } from '../common/Input'
 import { useForm } from '../common/useForm'
@@ -22,8 +22,7 @@ const initialLogin = {
 }
 
 
-
-export function Login(props) {
+export default function Login() {
 
     const [signupWindow, setSignupWindow] = useState(false);
     const [loginWindow, setLoginWindow] = useState(false);
@@ -99,12 +98,7 @@ export function Login(props) {
 
     return (
         <>
-            <div>
-                Pending?: {usersState.isPending ? 'true' : 'false'}<br />
-                Error?: {usersState.isError ? 'true' : 'false'}<br />
-                Current user: {JSON.stringify(usersState.currentUser)}
-            </div>
-            <Typography>
+            <Typography variant='h1'>
                 NextUp
             </Typography>
             <div>

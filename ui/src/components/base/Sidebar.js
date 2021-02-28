@@ -16,41 +16,48 @@ const useStyles = makeStyles(theme => ({
     }
 }));
 
-export default function Sidebar() {
+export default function Sidebar(props) {
+    const { open, onClose } = props;
     const classes = useStyles();
 
     return (
     <div style={{display: 'flex'}}>
         <Drawer
             style={{width: '200px'}}
-            variant='persistent'
+            variant='temporary'
             anchor='left'
-            open={true}
+            open={open}
+            onClose={onClose}
             classes={{ paper: classes.drawerPaper }}>
             <List>
-                <SidebarLink to="/" text='Dashboard' icon={<HomeIcon />} />
-                <SidebarLink to="/schedule" text='Schedule' icon={<CalendarTodayIcon />} />
-                <SidebarLink to="/groups" text='Groups' icon={<GroupIcon />} />
-                <SidebarLink to="/connect" text='Connect' icon={<GroupAddIcon />} />
-                <SidebarLink to="/create" text='Create' icon={<AddCircleIcon />} />
+                <SidebarItem onClose={onClose} to="/" text='Dashboard' icon={<HomeIcon />} />
+                <SidebarItem onClose={onClose} to="/schedule" text='Schedule' icon={<CalendarTodayIcon />} />
+                <SidebarItem onClose={onClose} to="/groups" text='Groups' icon={<GroupIcon />} />
+                <SidebarItem onClose={onClose} to="/connect" text='Connect' icon={<GroupAddIcon />} />
+                <SidebarItem onClose={onClose} to="/create" text='Create' icon={<AddCircleIcon />} />
             </List>
         </Drawer>
     </div>
     );
 }
 
-export function SidebarLink(props) {
-    const { to, text, icon, ...other } = props;
+export function SidebarItem(props) {
+    const { to, text, icon, onClose, ...other } = props;
     const classes = useStyles();
 
     return (
         <NavLink to={to} className={classes.link}>
-        <ListItem button>
+        <div
+            role='button'
+            onClick={onClose}>
+            <ListItem button>
             <ListItemIcon>
                 {icon}
             </ListItemIcon>
             <ListItemText primary={text} />
         </ListItem>
+
+        </div>
         </NavLink>
     );
 }

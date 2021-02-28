@@ -25,15 +25,3 @@ export const login = createAsyncThunk(
     }
 )
 
-export const logout = createAsyncThunk(
-    'users/logout',
-    async (user, { rejectWithValue }) => {
-        try {
-            const res = await api.users.logout(user);
-            return null; // returns null
-        } catch(err) {
-            return rejectWithValue(err.response.data);
-        }
-    }
-)
-

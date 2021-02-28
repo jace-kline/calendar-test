@@ -1,15 +1,19 @@
 import { createSlice } from '@reduxjs/toolkit'
-import { signup, login, logout } from './thunks'
+import { signup, login } from './actions'
+
+const initUser = {
+    currentUser: null,
+    isPending: false,
+    isError: false,
+    error: ''
+};
 
 export const usersSlice = createSlice({
     name: 'users',
-    initialState: {
-        currentUser: null,
-        isPending: false,
-        isError: false,
-        error: ''
+    initialState: initUser,
+    reducers: {
+        logout: (state, action) => initUser
     },
-    reducers: {},
     extraReducers: {
         [signup.pending]: (state, action) => ({
             currentUser: null,
@@ -23,12 +27,12 @@ export const usersSlice = createSlice({
             isError: false,
             error: ''
         }),
-        [logout.pending]: (state, action) => ({
-            ...state,
-            isPending: true,
-            isError: false,
-            error: ''
-        }),
+        // [logout.pending]: (state, action) => ({
+        //     ...state,
+        //     isPending: true,
+        //     isError: false,
+        //     error: ''
+        // }),
         [signup.rejected]: (state, action) => ({
             currentUser: null,
             isPending: false,
@@ -41,12 +45,12 @@ export const usersSlice = createSlice({
             isError: true,
             error: action.error.message
         }),
-        [logout.rejected]: (state, action) => ({
-            ...state,
-            isPending: false,
-            isError: true,
-            error: action.error.message
-        }),
+        // [logout.rejected]: (state, action) => ({
+        //     ...state,
+        //     isPending: false,
+        //     isError: true,
+        //     error: action.error.message
+        // }),
         [signup.fulfilled]: (state, action) => ({
             currentUser: action.payload,
             isPending: false,
@@ -58,12 +62,14 @@ export const usersSlice = createSlice({
             isPending: false,
             isError: false,
             error: ''
-        }),
-        [logout.fulfilled]: (state, action) => ({
-            currentUser: null,
-            isPending: false,
-            isError: false,
-            error: ''
-        }),
+        })
+        // [logout.fulfilled]: (state, action) => ({
+        //     currentUser: null,
+        //     isPending: false,
+        //     isError: false,
+        //     error: ''
+        // }),
     }
-})
+});
+
+export const { logout } = usersSlice.actions;

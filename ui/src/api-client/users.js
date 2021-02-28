@@ -36,17 +36,3 @@ export async function login(loginInfo) {
         return err;
     }
 }
-
-export async function logout(user) {
-    try {
-        let res = await axios.post(
-            `${API_URL}/users/logout/`, 
-            user,
-            axiosConfig
-        );
-        console.log(res.data);
-        return res.data;
-    } catch(err) {
-        return err;
-    }
-}

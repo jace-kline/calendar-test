@@ -1,9 +1,8 @@
-import { signup, login, logout } from './users.js'
+import { signup, login } from './users.js'
 
 export const api = {
     users: {
         signup,
-        login,
-        logout
+        login
     }
 };
